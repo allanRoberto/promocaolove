@@ -70,6 +70,6 @@ function search_cep_ajax() {
 	    break;  
 	}
 
-	echo json_encode($cep);
+	echo json_encode($output);
 	wp_die();
 }
