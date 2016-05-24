@@ -1,3 +1,4 @@
+/* global ajaxurl, wpAjax */
 (function($) {
 var fs = {add:'ajaxAdd',del:'ajaxDel',dim:'ajaxDim',process:'process',recolor:'recolor'}, wpList;
 
@@ -21,6 +22,13 @@ wpList = {
 		return s.nonce || url._ajax_nonce || $('#' + s.element + ' input[name="_ajax_nonce"]').val() || url._wpnonce || $('#' + s.element + ' input[name="_wpnonce"]').val() || 0;
 	},
 
+	/**
+	 * Extract list item data from a DOM element.
+	 *
+	 * @param  {HTMLElement} e The DOM element.
+	 * @param  {string}      t
+	 * @return {array}
+	 */
 	parseData: function(e,t) {
 		var d = [], wpListsData;
 
@@ -144,6 +152,13 @@ wpList = {
 		return false;
 	},
 
+	/**
+	 * Delete an item in the list via AJAX.
+	 *
+	 * @param  {HTMLElement} e A DOM element containing item data.
+	 * @param  {Object}      s
+	 * @return {boolean}
+	 */
 	ajaxDel: function( e, s ) {
 		e = $(e);
 		s = s || {};
@@ -208,7 +223,7 @@ wpList = {
 					s.delAfter( rres, _s );
 				}).dequeue();
 			}
-		}
+		};
 
 		$.ajax( s );
 		return false;
@@ -308,7 +323,11 @@ wpList = {
 	},
 
 	add: function( e, s ) {
-		e = $(e);
+		if ( 'string' == typeof e ) {
+			e = $( $.trim( e ) ); // Trim leading whitespaces
+		} else {
+			e = $( e );
+		}
 
 		var list = $(this), old = false, _s = { pos: 0, id: 0, oldId: null }, ba, ref, color;
 
@@ -317,16 +336,16 @@ wpList = {
 
 		s = $.extend(_s, this.wpList.settings, s);
 
-		if ( !e.size() || !s.what )
+		if ( !e.length || !s.what )
 			return false;
 
 		if ( s.oldId )
 			old = $('#' + s.what + '-' + s.oldId);
 
-		if ( s.id && ( s.id != s.oldId || !old || !old.size() ) )
+		if ( s.id && ( s.id != s.oldId || !old || !old.length ) )
 			$('#' + s.what + '-' + s.id).remove();
 
-		if ( old && old.size() ) {
+		if ( old && old.length ) {
 			old.before(e);
 			old.remove();
 		} else if ( isNaN(s.pos) ) {
@@ -339,7 +358,7 @@ wpList = {
 
 			ref = list.find( '#' + s.pos );
 
-			if ( 1 === ref.size() )
+			if ( 1 === ref.length )
 				ref[ba](e);
 			else
 				list.append(e);
@@ -370,11 +389,11 @@ wpList = {
 
 		e = $(e);
 
-		if ( list.wpList && e.parents( '#' + list.id ).size() )
+		if ( list.wpList && e.parents( '#' + list.id ).length )
 			return;
 
 		e.find(':input').each( function() {
-			if ( $(this).parents('.form-no-clear').size() )
+			if ( $(this).parents('.form-no-clear').length )
 				return;
 
 			t = this.type.toLowerCase();
@@ -418,7 +437,7 @@ wpList = {
 
 		items = $('.list-item:visible', list);
 
-		if ( !items.size() )
+		if ( !items.length )
 			items = $(list).children(':visible');
 
 		eo = [':even',':odd'];
