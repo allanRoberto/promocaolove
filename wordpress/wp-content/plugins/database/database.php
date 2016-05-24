@@ -13,7 +13,18 @@ Author URI: http://www.artezzo.com.br
 add_action('init', 'database_init');
 function database_init() {
 	wp_enqueue_script( 'custom-js', plugin_dir_url( __FILE__ )."js/custom.js",array('jquery'), '1.0');
-	wp_localize_script( 'custom-js', 'database', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'custom-js', 'database', array( 
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'is_admin' => is_admin()
+		) 
+	);
+
+}
+
+add_filter( 'gform_input_masks', 'add_mask' );
+function add_mask( $masks ) {
+    $masks['Celular'] = '(99) 9999-9999?';
+    return $masks;
 }
 
 add_action( 'wp_ajax_nopriv_search_cep_ajax', 'search_cep_ajax' );
