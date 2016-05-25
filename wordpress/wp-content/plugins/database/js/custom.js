@@ -69,6 +69,9 @@
                                 $(".bairro input[type='text']").val(dados.bairro);
                                 $(".cidade input[type='text']").val(dados.localidade);
                                 $(".estado input[type='text']").val(dados.uf);
+
+                                $('.result-cep').html(dados.logradouro+','+dados.bairro+' - '+dados.localidade+'/'+dados.uf);
+                                $('.result-cep').css('padding', '10px');
                             } //end if.
                             else {
                                 //CEP pesquisado não foi encontrado.

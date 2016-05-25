@@ -16332,7 +16332,7 @@ span.comment_date {
   text-transform: uppercase;
   height: 35px !important;
   padding:8px;
-  font-size: 15px !important;
+  font-size: 16px !important;
 }
 
 .text-gotham {
@@ -16345,7 +16345,8 @@ span.comment_date {
 	text-transform: uppercase;
 	height: 35px;
   padding:8px;
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1px;
 }
 
 .gfield input[type="text"]:-ms-input-placeholder {
@@ -16354,7 +16355,8 @@ span.comment_date {
 	text-transform: uppercase;
 	height: 35px;
   padding:8px;
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1px;
 }
 
 
@@ -16435,6 +16437,7 @@ span.comment_date {
 .disabled { /* For Firefox */
   border: 1px solid #aaa !important; 
     color: #aaa !important;
+  display: none;
 }
 
 .gfield_error .gfield_description, .validation_error{
@@ -16453,7 +16456,7 @@ span.comment_date {
 	margin:auto auto 30px auto;
 }
 
-.gform_button{  
+.gform_button, .gform_next_button{  
     background: #81236b;
     width: 100%;
     border: 0px;
@@ -16470,7 +16473,7 @@ span.comment_date {
 }
 
 .btn-search-cep {
-	    font-size: 14px;
+	    font-size: 16px;
     text-transform: uppercase;
     color: #fff;
     background: #fff;
@@ -16484,6 +16487,7 @@ span.comment_date {
     margin-left: -7px;
     padding-left: 7px;
     position: absolute;
+    text-align: center;
 }
 
 .gform_confirmation_message {
@@ -16511,3 +16515,87 @@ content: "";
     margin-right: 10px;
 }
 
+.result-cep {
+	font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #fff;
+    width: auto;
+    text-align: center;
+    display: table;
+    border-radius: 6px;
+    color: #81236b;
+    font-family: 'Gotham Condensed';
+    margin:auto;
+    letter-spacing: 1px;
+}
+
+.gform_previous_button {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #eee;
+    width: 100%;
+    text-align: center;
+    display: table;
+    border-radius: 6px;
+    color: #81236b;
+    font-family: 'Gotham Condensed';
+    margin: auto;
+    letter-spacing: 1px;
+    border: 0px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+
+.gf_step_number {
+	color: #fff;
+    background: transparent !important;
+    padding: 14px 26px;
+    border-radius: 50%;
+    font-family: 'Gotham Condensed';
+    border: 2px solid #fff;
+    font-size: 27px;
+}
+
+.gf_step_label {
+	color: #eee;
+    font-family: 'Gotham Condensed';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 19px;
+    margin-left: 12px;
+}
+
+ .gf_step_active .gf_step_number {
+	color: #eee;
+    background: #81236b !important;
+    padding: 14px 26px;
+    border-radius: 50%;
+    font-family: 'Gotham Condensed';
+    border: 2px solid #fff;
+    font-size: 27px;
+}
+
+.gf_step_active .gf_step_label {
+	color: #fff;
+    font-family: 'Gotham Condensed';
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 19px;
+    margin-left: 12px;
+}
+
+.gf_step {
+	width: 50%;
+	float: left;
+	display: table;
+	text-align: center;
+}
+
+.gf_page_steps {
+	display: table;
+    margin: 30px auto 40px auto;
+    width: 100%;
+}
